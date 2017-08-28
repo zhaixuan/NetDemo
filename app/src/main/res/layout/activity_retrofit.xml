@@ -3,5 +3,28 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get请求"
+        android:textAllCaps="false"
+        android:onClick="get"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="post请求"
+        android:textAllCaps="false"
+        android:onClick="post"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="form请求"
+        android:textAllCaps="false"
+        android:onClick="form"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="multipart请求"
+        android:textAllCaps="false"
+        android:onClick="multipart"/>
 </LinearLayout>
