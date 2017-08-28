@@ -33,5 +33,5 @@ public interface RetrofitAPIs {
     @Multipart
     @POST("http://wx.feicuiedu.com:9094/yitao/UserWeb?method=update")
         //Call<ResponseBody> nultiRequest(@Part("part")RequestBody body)
-    Call<ResponseBody> nultiRequest(@Part MultipartBody.Part part);
+    Call<ResponseBody> multiRequest(@Part MultipartBody.Part part);
 }

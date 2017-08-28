@@ -3,14 +3,12 @@ package com.zhuoxin.netdemo.netdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.io.IOException;
 
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,49 +37,49 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
     }
-//-----------------------------------get请求-----------------------------------------------
+    //-----------------------------------get请求-----------------------------------------------
     public void get(View view) {
-        HttpClient.getInstance().getRequest().enqueue(new Callback() {
+        HttpClient.getInstance().getRequest().enqueue(new UICallBack() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("TAG","失败"+e.getMessage());
+            public void onFailureInUI(Call call, IOException e) {
+                Toast.makeText(MainActivity.this,"失败"+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.e("TAG", "成功"+response.body().string());
+            public void onResponseInUI(Call call, Response response) throws IOException {
+                Toast.makeText(MainActivity.this,"成功"+response.body().string(),Toast.LENGTH_SHORT).show();
             }
         });
     }
-
+    //-----------------------------------post请求-----------------------------------------------
     public void post(View view) {
-        HttpClient.getInstance().postRequest().enqueue(new Callback() {
+        HttpClient.getInstance().postRequest().enqueue(new UICallBack() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("TAG","失败"+e.getMessage());
+            public void onFailureInUI(Call call, IOException e) {
+                Toast.makeText(MainActivity.this,"失败"+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.e("TAG","成功"+response.body().string());
+            public void onResponseInUI(Call call, Response response) throws IOException {
+                Toast.makeText(MainActivity.this,"成功"+response.body().string(),Toast.LENGTH_SHORT).show();
             }
         });
     }
-
+    //-----------------------------------表格请求-----------------------------------------------
     public void form(View view) {
-        HttpClient.getInstance().formRequest().enqueue(new Callback() {
+        HttpClient.getInstance().formRequest().enqueue(new UICallBack() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("TAG","失败"+e.getMessage());
+            public void onFailureInUI(Call call, IOException e) {
+                Toast.makeText(MainActivity.this,"失败"+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.e("TAG","成功"+response.body().string());
+            public void onResponseInUI(Call call, Response response) throws IOException {
+                Toast.makeText(MainActivity.this,"成功"+response.body().string(),Toast.LENGTH_SHORT).show();
             }
         });
     }
-
+    //-----------------------------------多部分请求-----------------------------------------------
     public void multipart(View view) {
         HttpClient.getInstance().multipartRequest().enqueue(new UICallBack() {
             @Override
