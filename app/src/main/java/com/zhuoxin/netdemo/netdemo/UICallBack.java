@@ -10,38 +10,40 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 /**
- * Created by Dionysus on 2017/8/14.
+ * Created by MACHENIKE on 2017/8/28.
  */
 
 public abstract class UICallBack implements Callback{
-    //拿到主线程的handler Looper也是主线程的。无需重写HandleMessage方法
-    Handler handle = new Handler(Looper.getMainLooper());
-    @Override//子线程
+
+    Handler mHandler = new Handler(Looper.getMainLooper());
+    @Override
     public void onFailure(final Call call, final IOException e) {
-        handle.post(new Runnable() {
+        //子线程
+        mHandler.post(new Runnable() {
             @Override
             public void run() {
-                //此方法在主线程里执行
-                onFailureUI(call,e);
+                //主线程
+                onFailureInUI(call,e);
             }
         });
     }
 
-    @Override//子线程
-    public void onResponse(final Call call,final Response response) throws IOException {
-        final String ms = response.body().string();//将响应变成字符串
-        //判断响应是否成功
-        if (response.equals("") && !response.isSuccessful()){
-            //失败
-            throw new IOException("error code:" + response.code());//例如code=404
-        }
-        handle.post(new Runnable() {
+    @Override
+    public void onResponse(final Call call, final Response response) throws IOException {
+        //子线程
+        mHandler.post(new Runnable() {
             @Override
             public void run() {
-                onResponseUI(call ,ms);//此方法在主线程里回调
+                //主线程
+                try {
+                    onResponseInUI(call,response);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
-    public abstract void onFailureUI(Call call ,IOException e);//此回调方法执行在主线程中
-    public abstract void onResponseUI(Call call ,String body);
+
+    public abstract void onFailureInUI(Call call, IOException e);
+    public abstract void onResponseInUI(Call call, Response response) throws IOException;
 }
