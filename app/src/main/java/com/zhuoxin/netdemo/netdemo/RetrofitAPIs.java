@@ -24,7 +24,7 @@ public interface RetrofitAPIs {
     Call<ResponseBody> getRequest(@Path("search")String search, @Query("q")String lj, @Query("page")String page);
 
     @POST("http://admin.syfeicuiedu.com/Handler/UserHandler.ashx?action=register")
-    Call<ResponseBody> postRequest(@Body RequestBody body);
+    Call<UserResult> postRequest(@Body User user);
 
     @FormUrlEncoded
     @POST("http://wx.feicuiedu.com:9094/yitao/UserWeb?method=register")
@@ -32,6 +32,6 @@ public interface RetrofitAPIs {
 
     @Multipart
     @POST("http://wx.feicuiedu.com:9094/yitao/UserWeb?method=update")
-        //Call<ResponseBody> nultiRequest(@Part("part")RequestBody body)
+        //Call<ResponseBody> multiRequest(@Part("part")RequestBody body)
     Call<ResponseBody> multiRequest(@Part MultipartBody.Part part);
 }

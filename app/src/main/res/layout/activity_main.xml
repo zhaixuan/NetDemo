@@ -36,4 +36,16 @@
         android:text="跳转"
         android:textAllCaps="false"
         android:onClick="skip"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转注册"
+        android:textAllCaps="false"
+        android:onClick="register"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转MVP"
+        android:textAllCaps="false"
+        android:onClick="MVP"/>
 </LinearLayout>

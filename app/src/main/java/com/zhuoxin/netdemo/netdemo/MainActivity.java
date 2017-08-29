@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.zhuoxin.netdemo.netdemo.MVP.MVPRegisterActivity;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -96,5 +98,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void skip(View view) {
         startActivity(new Intent(MainActivity.this,RetrofitActivity.class));
+    }
+
+    public void register(View view) {
+        startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+    }
+
+    public void MVP(View view) {
+        startActivity(new Intent(MainActivity.this,MVPRegisterActivity.class));
     }
 }

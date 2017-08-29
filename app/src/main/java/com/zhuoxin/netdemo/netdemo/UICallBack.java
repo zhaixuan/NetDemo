@@ -46,4 +46,5 @@ public abstract class UICallBack implements Callback{
 
     public abstract void onFailureInUI(Call call, IOException e);
     public abstract void onResponseInUI(Call call, Response response) throws IOException;
+
 }

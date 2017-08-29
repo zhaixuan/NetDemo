@@ -1,8 +1,12 @@
 package com.zhuoxin.netdemo.netdemo;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Dionysus on 2017/8/28.
@@ -18,8 +22,12 @@ public class RetrofitClient {
         OkHttpClient mOkHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(mInterceptor)
                 .build();
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
         mRetrofit = new Retrofit.Builder()
                 .baseUrl("https://api.github.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(mOkHttpClient)
                 .build();
     }
